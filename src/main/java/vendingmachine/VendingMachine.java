@@ -7,20 +7,23 @@ public class VendingMachine extends ProductNotFoundException {
 
     private static void  buy(Product product) throws ProductNotFoundException {
         if(product instanceof Coke){
+            --softDrink;
             if(softDrink == 0){
                 throw new SoftDrinksOutOfStockException();
             }
-            --softDrink;
+
         }else if(product instanceof Snack){
+            --saltySnacks;
             if(saltySnacks == 0){
                 throw new SaltyCracksAllEatenException();
             }
-            --saltySnacks;
+
         }else if(product instanceof Chocolate){
+            --chocolates;
             if(chocolates == 0){
                 throw new ChocolatesAllGone();
             }
-            --chocolates;
+
         }else{
             System.out.println("product not found");
         }
@@ -38,7 +41,6 @@ public class VendingMachine extends ProductNotFoundException {
     }
 
     public static void main(String[] args) {
-
         Coke coke = new Coke();
         Chocolate chocolate = new Chocolate();
         Snack snack = new Snack();
