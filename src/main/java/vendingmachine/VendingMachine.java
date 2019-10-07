@@ -1,31 +1,31 @@
 package vendingmachine;
 
 public class VendingMachine extends ProductNotFoundException {
-    private static int softDrink = 0;
-    private static int saltySnacks = 0;
-    private static int chocolates = 0;
+    private static int softDrink;
+    private static int saltySnacks;
+    private static int chocolates;
 
-    static void  buy(Product product) throws ProductNotFoundException {
+    private static void  buy(Product product) throws ProductNotFoundException {
         if(product instanceof Coke){
-            if(softDrink <= 0){
+            if(softDrink == 0){
                 throw new SoftDrinksOutOfStockException();
             }
-            softDrink+=-1;
+            --softDrink;
         }else if(product instanceof Snack){
-            if(saltySnacks <= 0){
+            if(saltySnacks == 0){
                 throw new SaltyCracksAllEatenException();
             }
-            saltySnacks+=-1;
+            --saltySnacks;
         }else if(product instanceof Chocolate){
-            if(chocolates <= 0){
+            if(chocolates == 0){
                 throw new ChocolatesAllGone();
             }
-            chocolates+=-1;
+            --chocolates;
         }else{
             System.out.println("product not found");
         }
     }
-    private static void addStock(Product product, int newStock){
+    private static void addStock(Product product,int newStock){
         if(product instanceof Chocolate){
             chocolates = newStock;
         }else if(product instanceof Coke){
@@ -33,7 +33,7 @@ public class VendingMachine extends ProductNotFoundException {
         }else if(product instanceof Snack){
             saltySnacks = newStock;
         }else {
-            System.out.println("product not part of vending snacks");
+            System.out.println("no stoke found");
         }
     }
 
@@ -42,15 +42,34 @@ public class VendingMachine extends ProductNotFoundException {
         Coke coke = new Coke();
         Chocolate chocolate = new Chocolate();
         Snack snack = new Snack();
-        VendingMachine.addStock(coke, 5);
+
+        VendingMachine.addStock(coke,3);
+        VendingMachine.addStock(chocolate,6);
+        VendingMachine.addStock(snack,7);
+
         try{
-            VendingMachine.buy(coke);
-//            VendingMachine.buy(chocolate);
             VendingMachine.buy(snack);
-            VendingMachine.buy(coke);
-//            VendingMachine.buy(chocolate);
             VendingMachine.buy(snack);
+            VendingMachine.buy(snack);
+            VendingMachine.buy(snack);
+
+            VendingMachine.buy(coke);
+            VendingMachine.buy(coke);
+            VendingMachine.buy(coke);
+//            VendingMachine.buy(coke);
+
+            VendingMachine.buy(chocolate);
+            VendingMachine.buy(chocolate);
+            VendingMachine.buy(chocolate);
+            VendingMachine.buy(chocolate);
+            VendingMachine.buy(chocolate);
+//            VendingMachine.buy(chocolate);
+//            VendingMachine.buy(chocolate);
+//            VendingMachine.buy(chocolate);
+
             System.out.println(softDrink);
+            System.out.println(saltySnacks);
+            System.out.println(chocolates);
         }catch (ProductNotFoundException e){
             e.printStackTrace();
         }
