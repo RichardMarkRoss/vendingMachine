@@ -2,7 +2,7 @@ package vendingmachine;
 
 public class ProductNotFoundException extends Exception {
     ProductNotFoundException(){
-        super();
+        super("");
     }
         ProductNotFoundException(String error){
             System.out.println("product not found");

@@ -1,4 +1,4 @@
 package vendingmachine;
 
-public class Coke extends Product {
+class Coke extends Product {
 }
