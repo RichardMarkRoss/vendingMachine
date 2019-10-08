@@ -49,7 +49,18 @@ public class MaxiVendingMachine extends VendingMachine {
             maxiVendingMachine.buy(chocolate);
             maxiVendingMachine.buy(chocolate);
             maxiVendingMachine.buy(coke);
+            maxiVendingMachine.buy(coke);
+//            maxiVendingMachine.buy(coke);
+//            maxiVendingMachine.buy(coke);
+//            maxiVendingMachine.buy(snack);
             maxiVendingMachine.buy(snack);
+            maxiVendingMachine.buy(snack);
+            maxiVendingMachine.buy(snack);
+            maxiVendingMachine.buy(snack);
+
+            System.out.println(maxiVendingMachine.chocolates);
+            System.out.println(maxiVendingMachine.saltySnacks);
+            System.out.println(maxiVendingMachine.softDrink);
 
         }catch (ChocolatesAllGone | SaltyCracksAllEatenException | SoftDrinksOutOfStockException | InvalidProductException e){
             e.printStackTrace();
